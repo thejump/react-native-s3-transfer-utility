@@ -62,7 +62,7 @@ export default class AWSS3TransferUtility{
   */
   initWithOptions(options){
     if(options.region){
-      s3Client.initWithOptions({"region":options.region});
+      s3Client.initWithOptions({"region":options.region,"identity_pool_id":options.identity_pool_id});
     }else{
       console.error("undefined region field")
     }
