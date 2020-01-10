@@ -168,21 +168,19 @@ RCT_EXPORT_METHOD(initWithOptions:(NSDictionary *)inputOptions)
 
 
 
-
--(AWSCognitoCredentialsProvider*)initWithOptions:(NSDictionary *)inputOptions{
-       [[NSNotificationCenter defaultCenter]
-         addObserver:self
-         selector:@selector(identityDidChange:)
-         name:AWSCognitoIdentityIdChangedNotification object:nil];
-        NSString *identityPoolId = [inputOptions objectForKey:IDENTITY_POOL_ID];
-        NSString *region = [inputOptions objectForKey:REGION];
-        credentialProvider = [[AWSCognitoCredentialsProvider alloc]initWithRegionType:[helper regionTypeFromString:region]  identityPoolId:identityPoolId identityProviderManager:self];
-        AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:[helper regionTypeFromString:region] credentialsProvider:credentialProvider];
-        [configuration addUserAgentProductToken:@"AWSCognitoCredentials"];
-        [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
-}
-
--(AWSCognitoCredentialsProvider*)getCredentialsProvider{
+-(AWSCognitoCredentialsProvider*)getCredentialsProvider:(NSDictionary *)inputOptions{
+    if(inputOptions!=nil){
+    [[NSNotificationCenter defaultCenter]
+           addObserver:self
+           selector:@selector(identityDidChange:)
+           name:AWSCognitoIdentityIdChangedNotification object:nil];
+          NSString *identityPoolId = [inputOptions objectForKey:IDENTITY_POOL_ID];
+          NSString *region = [inputOptions objectForKey:REGION];
+          credentialProvider = [[AWSCognitoCredentialsProvider alloc]initWithRegionType:[helper regionTypeFromString:region]  identityPoolId:identityPoolId identityProviderManager:self];
+          AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:[helper regionTypeFromString:region] credentialsProvider:credentialProvider];
+          [configuration addUserAgentProductToken:@"AWSCognitoCredentials"];
+          [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
+    }
     return credentialProvider;
 }
 

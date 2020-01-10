@@ -21,5 +21,5 @@
 #import "AWSRNHelper.h"
 
 @interface AWSRNCognitoCredentials : NSObject <RCTBridgeModule, AWSIdentityProviderManager>
--(AWSCognitoCredentialsProvider*)getCredentialsProvider;
+-(AWSCognitoCredentialsProvider*)getCredentialsProvider:(NSDictionary *)inputOptions;
 @end

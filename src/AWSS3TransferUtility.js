@@ -21,6 +21,9 @@ export default class AWSS3TransferUtility{
     listener.addListener("CompletionHandlerEvent", async event => {
       this.completionHandlerEvent(event.requestid,event.error,event.request);
     });
+    listener.addListener("LoginsRequestedEvent", async event => {
+      this.LoginsRequestedEvent(event.requestid,event.error,event.request);
+    });
   }
   /*
   * The progress feedback block.
@@ -54,6 +57,9 @@ export default class AWSS3TransferUtility{
   */
   completionHandlerEvent(requestid,error,request){
   }
+  LoginsRequestedEvent(requestid,error,request){
+  }
+
   /*
   * Constructs a new TransferUtility specifying the region
   * @param {string} region - the S3 bucket location

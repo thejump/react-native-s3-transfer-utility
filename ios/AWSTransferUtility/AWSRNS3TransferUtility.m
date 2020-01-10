@@ -34,11 +34,11 @@ RCT_EXPORT_METHOD(initWithOptions:(NSDictionary* )options){
         helper = [[AWSRNHelper alloc]init];
         requestMap = [[NSMutableDictionary alloc]init];
         AWSRNCognitoCredentials* CognitoCredentials = (AWSRNCognitoCredentials*)[_bridge moduleForName:@"AWSRNCognitoCredentials"];
-        [CognitoCredentials getCredentialsProvider].initWithOptions(options);
-        if(![CognitoCredentials getCredentialsProvider]){
+        // [self sendMessage:response toChannel:@"ProgressEventUtility"];
+        if(![CognitoCredentials getCredentialsProvider:options]){
             @throw [NSException exceptionWithName:@"InvalidArgument" reason:@"AWSCognitoCredentials is not initialized" userInfo:options];
         }
-        AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:[helper regionTypeFromString:[options objectForKey:@"region"]] credentialsProvider:[CognitoCredentials getCredentialsProvider]];
+        AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:[helper regionTypeFromString:[options objectForKey:@"region"]] credentialsProvider:[CognitoCredentials getCredentialsProvider:nil]];
         [AWSS3TransferUtility registerS3TransferUtilityWithConfiguration:configuration forKey:@"react-native-s3-transfer-utility"];
         [configuration addUserAgentProductToken:@"AWSS3TransferUtility"];
         transferUtility = [AWSS3TransferUtility S3TransferUtilityForKey:@"react-native-s3-transfer-utility"];
