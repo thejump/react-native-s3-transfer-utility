@@ -24,6 +24,15 @@ export default class AWSS3TransferUtility{
     listener.addListener("LoginsRequestedEvent", async  ({callbackId})  => {
       this.LoginsRequestedEvent(callbackId);
     });
+    listener.addListener("IdentityChange", async event => {
+      if (!event.Previous){
+        event.Previous = ""
+      }
+      if (!event.Current){
+        event.Current = ""
+      }
+      this.identityChanged(event.Previous,event.Current)
+    });
   }
   /*
   * The progress feedback block.
@@ -59,7 +68,8 @@ export default class AWSS3TransferUtility{
   }
   LoginsRequestedEvent(callbackId){
   }
-
+  identityChanged(Previous,Current){
+  }
   /*
   * Constructs a new TransferUtility specifying the region
   * @param {string} region - the S3 bucket location
@@ -73,6 +83,8 @@ export default class AWSS3TransferUtility{
       console.error("undefined region field")
     }
   }
+
+
   /*
   * Creates a download request and returns an ID to represent a upload task.
   * @param {string} bucket - the bucket name
