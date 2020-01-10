@@ -15,6 +15,7 @@
 
 import AWSS3TransferUtility from "./AWSS3TransferUtility";
 
+
 module.exports = {
-	AWSS3TransferUtility: new AWSS3TransferUtility()
+	AWSS3TransferUtility: new AWSS3TransferUtility(),
 };

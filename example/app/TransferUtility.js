@@ -81,7 +81,7 @@ class TransferUtility extends Component{
     }
   }
   initS3(){
-    options = {"region":S3Region}
+    options = {"region":S3Region,"identity_pool_id":identity_pool_id}
     AWSS3TransferUtility.initWithOptions(options);
   }
   downloadObject(){

@@ -34,6 +34,7 @@ RCT_EXPORT_METHOD(initWithOptions:(NSDictionary* )options){
         helper = [[AWSRNHelper alloc]init];
         requestMap = [[NSMutableDictionary alloc]init];
         AWSRNCognitoCredentials* CognitoCredentials = (AWSRNCognitoCredentials*)[_bridge moduleForName:@"AWSRNCognitoCredentials"];
+        [CognitoCredentials getCredentialsProvider].initWithOptions(options);
         if(![CognitoCredentials getCredentialsProvider]){
             @throw [NSException exceptionWithName:@"InvalidArgument" reason:@"AWSCognitoCredentials is not initialized" userInfo:options];
         }
