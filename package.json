@@ -17,5 +17,9 @@
     "s3",
     "transfer utility"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thejump/react-native-s3-transfer-utility"
+  },
   "author": "The Jump"
 }
