@@ -163,4 +163,10 @@ export default class AWSS3TransferUtility{
   }
 
 
+  canSuspendIfBackground  () {
+    if (Platform.OS === 'ios') {
+      NativeModule.canSuspendIfBackground();
+    }
+  };
+
 }

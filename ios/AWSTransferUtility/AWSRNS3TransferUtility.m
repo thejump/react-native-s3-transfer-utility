@@ -27,7 +27,22 @@
 
 RCT_EXPORT_MODULE(AWSRNS3TransferUtility);
 
+
+void (^backgroundSessionCompletionHandler)(void) = nil;
+
 #pragma mark - Exposed Methods
+
+
+RCT_EXPORT_METHOD(canSuspendIfBackground) {
+    NSLog(@"aws s3 canSuspendIfBackground");
+    dispatch_sync(dispatch_get_main_queue(), ^(void){
+        if (backgroundSessionCompletionHandler) {
+            backgroundSessionCompletionHandler();
+            NSLog(@"aws s3 did call backgroundSessionCompletionHandler (canSuspendIfBackground)");
+            backgroundSessionCompletionHandler = nil;
+        }
+    });
+}
 
 RCT_EXPORT_METHOD(initWithOptions:(NSDictionary* )options){
     if([options objectForKey:@"region"]){
@@ -394,6 +409,30 @@ RCT_EXPORT_METHOD(editRequest:(NSDictionary *)options){
      sendAppEventWithName:channel
      body:[info copy]
      ];
+}
+
+
+-(void)setBackgroundSessionCompletionHandler:(void (^)(void))handler {
+    backgroundSessionCompletionHandler = handler;
+    NSLog(@"aws s3 did setBackgroundSessionCompletionHandler");
+}
+
+- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session {
+    if (backgroundSessionCompletionHandler) {
+        NSLog(@"aws s3 Did Finish Events For Background URLSession (has backgroundSessionCompletionHandler)");
+        // This long delay is set as a security if the JS side does not call :canSuspendIfBackground: promptly
+        double delayInSeconds = 45.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            if (backgroundSessionCompletionHandler) {
+                backgroundSessionCompletionHandler();
+                NSLog(@"aws s3 did call backgroundSessionCompletionHandler (timeout)");
+                backgroundSessionCompletionHandler = nil;
+            }
+        });
+    } else {
+        NSLog(@"aws s3 Did Finish Events For Background URLSession (no backgroundSessionCompletionHandler)");
+    }
 }
 
 @end

@@ -20,6 +20,7 @@
 #import "RCTBridgeModule.h"
 #import "AWSRNHelper.h"
 
-@interface AWSRNS3TransferUtility : NSObject <RCTBridgeModule>
 
+@interface AWSRNS3TransferUtility : RCTEventEmitter <RCTBridgeModule, NSURLSessionTaskDelegate>
+    (void)setBackgroundSessionCompletionHandler:(void (^)(void))handler;
 @end
