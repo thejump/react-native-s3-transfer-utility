@@ -56,6 +56,14 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.m" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1878" y="639" key="CommitChangelistDialog2" timestamp="1578679688940">
+      <screen x="0" y="23" width="3840" height="2137" />
+    </state>
+    <state x="1878" y="639" key="CommitChangelistDialog2/0.23.3840.2137@0.23.3840.2137" timestamp="1578679688940" />
+    <state x="1883" y="778" key="Vcs.Push.Dialog.v2" timestamp="1578679690540">
+      <screen x="0" y="23" width="3840" height="2137" />
+    </state>
+    <state x="1883" y="778" key="Vcs.Push.Dialog.v2/0.23.3840.2137@0.23.3840.2137" timestamp="1578679690540" />
     <state x="1963" y="795" width="639" height="486" key="find.popup" timestamp="1578679544041">
       <screen x="0" y="23" width="3840" height="2137" />
     </state>
