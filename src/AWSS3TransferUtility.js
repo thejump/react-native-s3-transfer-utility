@@ -21,18 +21,6 @@ export default class AWSS3TransferUtility{
     listener.addListener("CompletionHandlerEvent", async event => {
       this.completionHandlerEvent(event.requestid,event.error,event.request);
     });
-    listener.addListener("LoginsRequestedEvent", async  ({callbackId})  => {
-      this.LoginsRequestedEvent(callbackId);
-    });
-    listener.addListener("IdentityChange", async event => {
-      if (!event.Previous){
-        event.Previous = ""
-      }
-      if (!event.Current){
-        event.Current = ""
-      }
-      this.identityChanged(event.Previous,event.Current)
-    });
   }
   /*
   * The progress feedback block.
@@ -65,10 +53,6 @@ export default class AWSS3TransferUtility{
   * }
   */
   completionHandlerEvent(requestid,error,request){
-  }
-  LoginsRequestedEvent(callbackId){
-  }
-  identityChanged(Previous,Current){
   }
   /*
   * Constructs a new TransferUtility specifying the region

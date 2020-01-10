@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4a0a870b-eeb0-41c9-80ef-415d6ff989a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/AWSTransferUtility/AWSRNCognitoCredentials.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/AWSTransferUtility/AWSRNCognitoCredentials.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AWSS3TransferUtility.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AWSS3TransferUtility.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +52,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1578678632744</updated>
-      <workItem from="1578678633832" duration="8327000" />
+      <workItem from="1578678633832" duration="9508000" />
     </task>
     <task id="LOCAL-00001" summary="initial work">
       <created>1578679689030</created>
@@ -109,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578693915393</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="initial work">
+      <created>1578694050157</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1578694050157</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,17 +131,17 @@
     <option name="LAST_COMMIT_MESSAGE" value="initial work" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1878" y="639" key="CommitChangelistDialog2" timestamp="1578693915294">
+    <state x="1878" y="639" key="CommitChangelistDialog2" timestamp="1578694050061">
       <screen x="0" y="23" width="3840" height="2137" />
     </state>
-    <state x="1878" y="639" key="CommitChangelistDialog2/0.23.3840.2137@0.23.3840.2137" timestamp="1578693915294" />
-    <state x="1883" y="778" key="Vcs.Push.Dialog.v2" timestamp="1578693916708">
+    <state x="1878" y="639" key="CommitChangelistDialog2/0.23.3840.2137@0.23.3840.2137" timestamp="1578694050061" />
+    <state x="1883" y="778" key="Vcs.Push.Dialog.v2" timestamp="1578694051209">
       <screen x="0" y="23" width="3840" height="2137" />
     </state>
-    <state x="1883" y="778" key="Vcs.Push.Dialog.v2/0.23.3840.2137@0.23.3840.2137" timestamp="1578693916708" />
-    <state x="1963" y="795" width="639" height="486" key="find.popup" timestamp="1578693952033">
+    <state x="1883" y="778" key="Vcs.Push.Dialog.v2/0.23.3840.2137@0.23.3840.2137" timestamp="1578694051209" />
+    <state x="1963" y="795" width="639" height="486" key="find.popup" timestamp="1578695202562">
       <screen x="0" y="23" width="3840" height="2137" />
     </state>
-    <state x="1963" y="795" width="639" height="486" key="find.popup/0.23.3840.2137@0.23.3840.2137" timestamp="1578693952033" />
+    <state x="1963" y="795" width="639" height="486" key="find.popup/0.23.3840.2137@0.23.3840.2137" timestamp="1578695202562" />
   </component>
 </project>

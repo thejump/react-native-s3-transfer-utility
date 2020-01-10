@@ -149,17 +149,6 @@ RCT_EXPORT_METHOD(initWithOptions:(NSDictionary *)inputOptions)
     return [[AWSTask taskWithResult:nil] continueWithSuccessBlock:^id _Nullable(AWSTask * _Nonnull task) {
         __block NSArray* arr;
 
-        dispatch_semaphore_t sendMessageSemaphore = dispatch_semaphore_create(0);
-
-        [self sendMessage:[[NSMutableDictionary alloc]init] toChannel:@"LoginsRequestedEvent" semaphore:sendMessageSemaphore withCallback:^(NSArray* response) {
-            arr = response;
-        }];
-
-        dispatch_semaphore_wait(sendMessageSemaphore, DISPATCH_TIME_FOREVER);
-
-        if (![[arr objectAtIndex:0]isKindOfClass:[NSDictionary class]]){
-            return [[NSDictionary alloc]init];
-        }
         return [self setLogins:[arr objectAtIndex:0]];
     }];
 }
@@ -188,7 +177,6 @@ RCT_EXPORT_METHOD(initWithOptions:(NSDictionary *)inputOptions)
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
     [dict setValue:[notification.userInfo valueForKey:AWSCognitoNotificationPreviousId] forKey:@"Previous"];
     [dict setValue:[notification.userInfo valueForKey:AWSCognitoNotificationNewId] forKey:@"Current"];
-    [self sendMessage:dict toChannel:@"IdentityChange"];
 }
 
 
@@ -234,31 +222,9 @@ RCT_EXPORT_METHOD(sendCallbackResponse:(NSString *)callbackId response:(NSArray 
 
 -(NSMutableDictionary*)setLogins:(NSMutableDictionary*)reactLogins{
     NSMutableDictionary *logins = [[NSMutableDictionary alloc]init];
-    for (NSString* key in reactLogins){
-        if ([key isEqualToString:@"FacebookProvider"]){
-            [logins setValue:[reactLogins objectForKey:key] forKey:AWSIdentityProviderFacebook];
-            continue;
-        }else if ([key isEqualToString:@"DigitsProvider"]){
-            [logins setValue:[reactLogins objectForKey:key] forKey:AWSIdentityProviderDigits];
-            continue;
-        }else if ([key isEqualToString:@"GoogleProvider"]){
-            [logins setValue:[reactLogins objectForKey:key] forKey:AWSIdentityProviderGoogle];
-            continue;
-        }else if ([key isEqualToString:@"AmazonProvider"]){
-            [logins setValue:[reactLogins objectForKey:key] forKey:AWSIdentityProviderLoginWithAmazon];
-            continue;
-        }else if ([key isEqualToString:@"TwitterProvider"]){
-            [logins setValue:[reactLogins objectForKey:key] forKey:AWSIdentityProviderTwitter];
-            continue;
-        }else if ([key isEqualToString:@"CognitoProvider"]){
-            [logins setValue:[reactLogins objectForKey:key] forKey:AWSIdentityProviderAmazonCognitoIdentity];
-            continue;
-        }else{
-            [logins setValue:[reactLogins objectForKey:key] forKey:key];
-            continue;
-        }
-    }
+    [logins setValue:[reactLogins objectForKey:@"CognitoProvider"] forKey:AWSIdentityProviderAmazonCognitoIdentity];
     return logins;
+
 }
 
 @end
