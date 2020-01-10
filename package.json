@@ -1,0 +1,23 @@
+{
+  "name": "react-native-s3-transfer-utility",
+  "description": "A React Native wrapper for the AWS SDK for the S3 Transfer Utility.",
+  "version": "0.0.1",
+  "main": "./src/index.js",
+  "files": [
+    "android/",
+    "ios/",
+    "src/"
+  ],
+  "keywords": [
+    "aws",
+    "aws mobile",
+    "react-native",
+    "react",
+    "native",
+    "s3",
+    "transfer utility"
+  ],
+  "author": "Amazon Web Services",
+  "license": "Apache-2.0",
+  }
+}
