@@ -17,6 +17,5 @@
     "s3",
     "transfer utility"
   ],
-  "author": "Amazon Web Services",
-  "license": "Apache-2.0"
+  "author": "The Jump"
 }
